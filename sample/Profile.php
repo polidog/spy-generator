@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Polidog\UnitTestGenerator\Sample;
+
+class Profile
+{
+    /**
+     * @var string
+     */
+    private $nickname;
+
+    public function __construct(string $nickname)
+    {
+        $this->nickname = $nickname;
+    }
+
+    public function getNickname(): string
+    {
+        return $this->nickname;
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "name": "polidog/unit-test-generator",
+    "type": "library",
+    "description": "Generate for phpunit test class",
+    "require": {
+        "php": "^7.2",
+        "zendframework/zend-code": "^3.4",
+        "helicon/object-type-parser": "^0.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Polidog\\UnitTestGenerator\\": "src/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.5",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Polidog\\UnitTestGenerator\\Tests\\": "tests/",
+            "Polidog\\UnitTestGenerator\\Sample\\": "sample/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "polidog",
+            "email": "polidogs@gmail.com"
+        }
+    ]
+}
