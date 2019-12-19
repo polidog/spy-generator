@@ -1,5 +1,5 @@
 {
-    "name": "polidog/unit-test-generator",
+    "name": "polidog/spy-generator",
     "type": "library",
     "description": "Generate for phpunit test class",
     "require": {
@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Polidog\\UnitTestGenerator\\": "src/"
+            "Polidog\\SpyGenerator\\": "src/"
         }
     },
     "require-dev": {
@@ -18,8 +18,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Polidog\\UnitTestGenerator\\Tests\\": "tests/",
-            "Polidog\\UnitTestGenerator\\Sample\\": "sample/"
+            "Polidog\\SpyGenerator\\Tests\\": "tests/",
+            "Polidog\\SpyGenerator\\Sample\\": "sample/"
         }
     },
     "license": "MIT",

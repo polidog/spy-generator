@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require '../vendor/autoload.php';
 
-use Polidog\UnitTestGenerator\Sample\User;
+use Polidog\SpyGenerator\Sample\User;
 use Polidog\UnitTestGenerator\TestClassGenerator;
 
 $generator = new TestClassGenerator();

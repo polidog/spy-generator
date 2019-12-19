@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\UnitTestGenerator\Sample;
+namespace Polidog\SpyGenerator\Sample;
 
 class Profile
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\UnitTestGenerator;
+namespace Polidog\SpyGenerator;
 
 use Helicon\ObjectTypeParser\Parser;
 use Zend\Code\Generator\ClassGenerator;

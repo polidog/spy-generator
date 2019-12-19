@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\UnitTestGenerator;
+namespace Polidog\SpyGenerator;
 
 use PHPUnit\Framework\TestCase;
 use Zend\Code\Generator\ClassGenerator;
