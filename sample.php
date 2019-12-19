@@ -3,6 +3,9 @@
 declare(strict_types=1);
 require 'vendor/autoload.php';
 
-$generator = new \Polidog\UnitTestGenerator\TestClassGenerator();
-$code = $generator->generate(\Polidog\UnitTestGenerator\Tests\Hoge::class);
+use Polidog\SpyGenerator\Sample\User;
+use Polidog\SpyGenerator\TestClassGenerator;
+
+$generator = new TestClassGenerator();
+$code = $generator->generate(User::class);
 var_dump($code);
