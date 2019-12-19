@@ -25,7 +25,7 @@ class TestMethods implements Sentence
         $methodNodes = $this->ast->methods();
         foreach ($methodNodes as $node) {
             $methodGenerator = new MethodGenerator();
-            $methodGenerator->setName('test'.ucfirst($node->name));
+            $methodGenerator->setName('test'.ucfirst((string)$node->name));
             $methodGenerator->setReturnType('void');
             $generator->addMethodFromGenerator($methodGenerator);
         }
