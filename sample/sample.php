@@ -14,4 +14,4 @@ $classCodeFactory = new ClassCodeFactory(new \Helicon\ObjectTypeParser\Parser())
 
 $generator = new ClassSpyGenerator($runner, $classCodeFactory);
 $code = $generator->generate(User::class);
-var_dump($code);
+echo $code;

@@ -29,14 +29,13 @@ class Properties
         return implode("\n", $codes);
     }
 
-    public function createObject(\ReflectionClass $reflectionClass)
+    public function revealCodes(): array
     {
         $codes = [];
         foreach ($this->properties as $property => $class) {
             $codes[$property] = sprintf('$this->%s->reveal()', $property);
         }
 
-        $constractors = $reflectionClass->getConstructor();
-        var_dump($codes);
+        return $codes;
     }
 }
