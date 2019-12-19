@@ -4,32 +4,35 @@ declare(strict_types=1);
 
 namespace Polidog\SpyGenerator;
 
-use Helicon\ObjectTypeParser\Parser;
-use PHPUnit\Framework\TestCase;
-use Polidog\SpyGenerator\Sentence\SetUpMethod;
-use Polidog\SpyGenerator\Sentence\TestMethods;
-use Polidog\SpyGenerator\Sentence\UseSentence;
+use Polidog\SpyGenerator\Code\Ast;
+use Polidog\SpyGenerator\Code\ClassCode;
+use Polidog\SpyGenerator\Sentence\Runner;
 use Zend\Code\Generator\ClassGenerator;
 
 class ClassSpyGenerator implements SpyGenerator
 {
+    /**
+     * @var Runner
+     */
+    private $runner;
+
+    public function __construct(Runner $runner)
+    {
+        $this->runner = $runner;
+    }
+
     public function generate(string $className, ?string $namespace = null): string
     {
         $classGenerator = new ClassGenerator();
+        $classGenerator->setNamespaceName($namespace);
+
         $refClass = new \ReflectionClass($className);
         $code = file_get_contents($refClass->getFileName());
         $ast = new Ast($code);
+        $classCode = new ClassCode($refClass, $ast);
 
         // generate code.
-        (new UseSentence($ast))($classGenerator);
-        (new SetUpMethod($className, new Parser()))($classGenerator);
-        (new TestMethods($ast))($classGenerator);
-
-        $classGenerator->addUse(TestCase::class);
-        $classGenerator->setName($className.'Test')
-            ->setNamespaceName($namespace)
-            ->setExtendedClass(TestCase::class)
-            ;
+        $this->runner->run($classGenerator, $classCode);
 
         return $classGenerator->generate();
     }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\SpyGenerator;
+namespace Polidog\SpyGenerator\Code;
 
 use PhpParser\Node;
 use PhpParser\ParserFactory;
