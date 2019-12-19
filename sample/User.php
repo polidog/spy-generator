@@ -27,11 +27,13 @@ class User
 
     public function getDisplayName(): string
     {
-        return $this->profile->getNickname();
+        $name = $this->profile->getNickname();
+
+        return $name;
     }
 
     public function getPhotoURL(): string
     {
-        return $this->photo->getUrl();
+        return $this->photo->getUrl('http://localhost:8000/images/');
     }
 }

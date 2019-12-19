@@ -3,9 +3,9 @@
 declare(strict_types=1);
 require 'vendor/autoload.php';
 
+use Polidog\SpyGenerator\ClassSpyGenerator;
 use Polidog\SpyGenerator\Sample\User;
-use Polidog\SpyGenerator\TestClassGenerator;
 
-$generator = new TestClassGenerator();
+$generator = new ClassSpyGenerator();
 $code = $generator->generate(User::class);
 var_dump($code);

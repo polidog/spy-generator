@@ -7,28 +7,30 @@ namespace Polidog\SpyGenerator;
 use Helicon\ObjectTypeParser\Parser;
 use PHPUnit\Framework\TestCase;
 use Polidog\SpyGenerator\Sentence\SetUpMethod;
+use Polidog\SpyGenerator\Sentence\TestMethods;
 use Polidog\SpyGenerator\Sentence\UseSentence;
 use Zend\Code\Generator\ClassGenerator;
 
-class TestClassGenerator implements Generator
+class ClassSpyGenerator implements SpyGenerator
 {
     public function generate(string $className, ?string $namespace = null): string
     {
-        $testClass = new ClassGenerator();
+        $classGenerator = new ClassGenerator();
         $refClass = new \ReflectionClass($className);
         $code = file_get_contents($refClass->getFileName());
         $ast = new Ast($code);
 
         // generate code.
-        (new UseSentence($ast))($testClass);
-        (new SetUpMethod($className, new Parser()))($testClass);
+        (new UseSentence($ast))($classGenerator);
+        (new SetUpMethod($className, new Parser()))($classGenerator);
+        (new TestMethods($ast))($classGenerator);
 
-        $testClass->addUse(TestCase::class);
-        $testClass->setName($className.'Test')
+        $classGenerator->addUse(TestCase::class);
+        $classGenerator->setName($className.'Test')
             ->setNamespaceName($namespace)
             ->setExtendedClass(TestCase::class)
             ;
 
-        return $testClass->generate();
+        return $classGenerator->generate();
     }
 }

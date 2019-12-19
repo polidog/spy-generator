@@ -9,7 +9,7 @@ use Polidog\SpyGenerator\MockProperties;
 use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\MethodGenerator;
 
-class SetUpMethod
+class SetUpMethod implements Sentence
 {
     /**
      * @var string

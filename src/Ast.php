@@ -38,6 +38,22 @@ class Ast
         return $results;
     }
 
+    /**
+     * @return Node\Stmt\ClassMethod[]
+     */
+    public function methods(): array
+    {
+        $methods = [];
+        $classNode = $this->class();
+        foreach ($classNode->stmts as $node) {
+            if (('Stmt_ClassMethod' === $node->getType()) && '__construct' !== (string) $node->name) {
+                $methods[] = $node;
+            }
+        }
+
+        return $methods;
+    }
+
     private function class(): Node\Stmt\Class_
     {
         $nsNode = $this->namespace();

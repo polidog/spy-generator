@@ -16,8 +16,8 @@ class Photo
         $this->url = $url;
     }
 
-    public function getUrl(): string
+    public function getUrl(string $baseUrl): string
     {
-        return $this->url;
+        return $baseUrl.$this->url;
     }
 }

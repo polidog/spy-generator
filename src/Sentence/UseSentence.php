@@ -8,7 +8,7 @@ use PhpParser\Node;
 use Polidog\SpyGenerator\Ast;
 use Zend\Code\Generator\ClassGenerator;
 
-class UseSentence
+class UseSentence implements Sentence
 {
     /**
      * @var Ast
@@ -20,7 +20,7 @@ class UseSentence
         $this->ast = $ast;
     }
 
-    public function __invoke(ClassGenerator $generator)
+    public function __invoke(ClassGenerator $generator): void
     {
         /** @var Node\Stmt\UseUse $node */
         foreach ($this->ast->useStatement() as $node) {
