@@ -16,6 +16,7 @@ class TestClassGenerator implements Generator
         (new CreateSetUpMethod())($testClass, $className);
         (new CreateTestMethod($refClass))($testClass);
 
+        $testClass->addUse(TestCase::class);
         $testClass->setName($className.'Test')
             ->setNamespaceName($namespace)
             ->setExtendedClass(TestCase::class)
