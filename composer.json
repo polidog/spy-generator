@@ -5,7 +5,8 @@
     "require": {
         "php": "^7.2",
         "zendframework/zend-code": "^3.4",
-        "helicon/object-type-parser": "^0.0.1"
+        "helicon/object-type-parser": "^0.0.1",
+        "nikic/php-parser": "^4.3"
     },
     "autoload": {
         "psr-4": {

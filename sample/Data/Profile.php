@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Polidog\SpyGenerator\Sample;
+namespace Polidog\SpyGenerator\Sample\Data;
 
 class Profile
 {

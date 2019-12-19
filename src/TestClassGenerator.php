@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Polidog\SpyGenerator;
 
+use Helicon\ObjectTypeParser\Parser;
 use PHPUnit\Framework\TestCase;
+use Polidog\SpyGenerator\Sentence\SetUpMethod;
+use Polidog\SpyGenerator\Sentence\UseSentence;
 use Zend\Code\Generator\ClassGenerator;
 
 class TestClassGenerator implements Generator
@@ -13,8 +16,12 @@ class TestClassGenerator implements Generator
     {
         $testClass = new ClassGenerator();
         $refClass = new \ReflectionClass($className);
-        (new CreateSetUpMethod())($testClass, $className);
-        (new CreateTestMethod($refClass))($testClass);
+        $code = file_get_contents($refClass->getFileName());
+        $ast = new Ast($code);
+
+        // generate code.
+        (new UseSentence($ast))($testClass);
+        (new SetUpMethod($className, new Parser()))($testClass);
 
         $testClass->addUse(TestCase::class);
         $testClass->setName($className.'Test')
