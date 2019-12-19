@@ -6,7 +6,7 @@ namespace Polidog\SpyGenerator\Sentence;
 
 use Helicon\ObjectTypeParser\ParserInterface;
 use Polidog\SpyGenerator\Code\ClassCode;
-use Polidog\SpyGenerator\MockProperties;
+use Polidog\SpyGenerator\Code\Properties;
 use Zend\Code\Generator\ClassGenerator;
 use Zend\Code\Generator\MethodGenerator;
 
@@ -25,14 +25,14 @@ class SetUpMethod implements Sentence
     public function __invoke(ClassGenerator $generator, ClassCode $classCode): void
     {
         $methodGenerator = new MethodGenerator();
-        $mockProperties = new MockProperties();
+        $mockProperties = new Properties();
 
         foreach (($this->parser)($classCode->reflection->getName()) as $property => $schema) {
             $mockProperties->add($property, $schema['type']);
         }
 
         $methodGenerator->setName('setUp');
-        $methodGenerator->setBody($mockProperties->generateMockCode());
+        $methodGenerator->setBody($mockProperties->prophesizeCode());
         $methodGenerator->setReturnType('void');
         $methodGenerator->setFlags(MethodGenerator::FLAG_PUBLIC);
         $generator->addMethodFromGenerator($methodGenerator);

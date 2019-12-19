@@ -15,6 +15,7 @@ class RunnerFactory
         $runner->add(new SetUpMethod(new Parser()));
         $runner->add(new UseSentence());
         $runner->add(new TestMethods());
+        $runner->add(new CreateObjectMethod());
 
         return $runner;
     }

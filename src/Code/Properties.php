@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Polidog\SpyGenerator;
+namespace Polidog\SpyGenerator\Code;
 
-class MockProperties
+class Properties
 {
     /**
      * @var string[]
@@ -18,7 +18,7 @@ class MockProperties
         }
     }
 
-    public function generateMockCode(): string
+    public function prophesizeCode(): string
     {
         $codes = [];
         foreach ($this->properties as $property => $class) {
@@ -27,5 +27,16 @@ class MockProperties
         }
 
         return implode("\n", $codes);
+    }
+
+    public function createObject(\ReflectionClass $reflectionClass)
+    {
+        $codes = [];
+        foreach ($this->properties as $property => $class) {
+            $codes[$property] = sprintf('$this->%s->reveal()', $property);
+        }
+
+        $constractors = $reflectionClass->getConstructor();
+        var_dump($codes);
     }
 }
