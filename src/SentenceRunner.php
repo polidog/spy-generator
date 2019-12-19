@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Polidog\SpyGenerator\Sentence;
+namespace Polidog\SpyGenerator;
 
 use Polidog\SpyGenerator\Code\ClassCode;
+use Polidog\SpyGenerator\Sentence\Sentence;
 use Zend\Code\Generator\ClassGenerator;
 
-class Runner
+class SentenceRunner
 {
     /**
      * @var Sentence[]

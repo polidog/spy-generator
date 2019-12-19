@@ -7,9 +7,9 @@ require '../vendor/autoload.php';
 use Polidog\SpyGenerator\ClassSpyGenerator;
 use Polidog\SpyGenerator\Code\ClassCodeFactory;
 use Polidog\SpyGenerator\Sample\User;
-use Polidog\SpyGenerator\Sentence\RunnerFactory;
+use Polidog\SpyGenerator\SentenceRunnerFactory;
 
-$runner = (new RunnerFactory())->newRunner();
+$runner = (new SentenceRunnerFactory())->newRunner();
 $classCodeFactory = new ClassCodeFactory(new \Helicon\ObjectTypeParser\Parser());
 
 $generator = new ClassSpyGenerator($runner, $classCodeFactory);
