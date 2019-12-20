@@ -14,5 +14,6 @@ class ClassName implements Sentence
     {
         $generator->setName($classCode->reflection->getShortName().'Test');
         $generator->setExtendedClass(TestCase::class);
+        $generator->addUse(TestCase::class);
     }
 }
