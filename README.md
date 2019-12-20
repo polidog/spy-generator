@@ -20,9 +20,9 @@ require '../vendor/autoload.php';
 use Polidog\SpyGenerator\ClassSpyGenerator;
 use Polidog\SpyGenerator\Code\ClassCodeFactory;
 use Polidog\SpyGenerator\Sample\User;
-use Polidog\SpyGenerator\SentenceRunnerFactory;
+use Polidog\SpyGenerator\RunnerFactory;
 
-$runner = (new SentenceRunnerFactory())->newRunner();
+$runner = (new RunnerFactory())->newRunner();
 $classCodeFactory = new ClassCodeFactory(new \Helicon\ObjectTypeParser\Parser());
 
 $generator = new ClassSpyGenerator($runner, $classCodeFactory);

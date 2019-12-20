@@ -11,15 +11,17 @@ use Polidog\SpyGenerator\Sentence\SetUpMethod;
 use Polidog\SpyGenerator\Sentence\TestMethods;
 use Polidog\SpyGenerator\Sentence\UseSentence;
 
-class SentenceRunnerFactory
+class RunnerFactory
 {
     public function newRunner(): SentenceRunner
     {
+        $methodRunner = new SentenceMethodRunner();
+
         $runner = new SentenceRunner();
         $runner->add(new ClassName());
         $runner->add(new SetUpMethod(new Parser()));
         $runner->add(new UseSentence());
-        $runner->add(new TestMethods());
+        $runner->add(new TestMethods($methodRunner));
         $runner->add(new CreateObjectMethod());
 
         return $runner;

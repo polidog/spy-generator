@@ -13,15 +13,7 @@ class SentenceRunner
     /**
      * @var Sentence[]
      */
-    private $sentences;
-
-    /**
-     * @param Sentence[] $sentences
-     */
-    public function __construct(array $sentences = [])
-    {
-        $this->sentences = $sentences;
-    }
+    private $sentences = [];
 
     public function add(Sentence $sentence): void
     {
