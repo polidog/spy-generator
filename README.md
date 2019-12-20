@@ -1,6 +1,6 @@
 # polidog/spy-generator
 
-This library is generate testspy code for phpunit.
+This library is generate test code for phpunit.
 
 ## using
 
